@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+    "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+    "suppressions_1_1.dtd">
+
+<suppressions>
+    <!-- Suppress JavadocPackage in the test packages -->
+    <suppress checks="JavadocPackage" files="[\\/]test[\\/]"/>
+    
+    <!-- Suppress all Checkstyle checks on auto generated  proxy classes for web services consumed. -->    
+    <suppress checks="[a-zA-Z0-9]*" files="[\\/]*.xml"/>
+    <suppress checks="[a-zA-Z0-9]*" files="[\\/]*.properties"/>
+    <suppress checks="HiddenField" files="[\\/]*.java"/>
+    
+    <!--  suppress file and method length for Messages and Message keys -->    
+<!--     <suppress checks="FileLength" files="[\\/]*Messages.java"/> -->
+<!--     <suppress checks="MethodLength" files="[\\/]*Messages.java"/> -->
+    
+<!--     <suppress checks="FileLength" files="[\\/]*MessageKeys.java"/> -->
+<!--     <suppress checks="MethodLength" files="[\\/]*MessageKeys.java"/> -->
+    
+<!--      suppress file and method length for Constants -->
+<!--     <suppress checks="FileLength" files="[\\/]*Constants.java"/> -->
+
+     <suppress checks="[a-zA-Z0-9]*" files="[\\/]mapper[\\/]"/>
+
+</suppressions>

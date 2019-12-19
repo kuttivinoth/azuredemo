@@ -1,0 +1,25 @@
+#ReferenceDataService Gradle Settings
+build/
+*.class
+*.classpath
+
+/.project
+/.war
+
+*.class
+
+*.projects
+
+.gradle/
+
+*.prefs
+
+*.project
+bin/
+.settings/
+.classpath/
+
+.metadata/
+
+
+sonarError

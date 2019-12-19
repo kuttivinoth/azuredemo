@@ -1,0 +1,257 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://customeronboarding.cob.cbd.ae/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="PhoniexMasterDataManagementService"
+	targetNamespace="http://customeronboarding.cob.cbd.ae/">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://customeronboarding.cob.cbd.ae/"
+				schemaLocation="../xsd/PhoniexMasterDataManagementService_schema1.xsd" />
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="getPositionListResponse">
+		<wsdl:part element="tns:getPositionListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getNationalityList">
+		<wsdl:part element="tns:getNationalityList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getSicCodeListResponse">
+		<wsdl:part element="tns:getSicCodeListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCityList">
+		<wsdl:part element="tns:getCityList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCountryListResponse">
+		<wsdl:part element="tns:getCountryListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getSicCodeList">
+		<wsdl:part element="tns:getSicCodeList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getRIMClassList">
+		<wsdl:part element="tns:getRIMClassList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getOccupationListResponse">
+		<wsdl:part element="tns:getOccupationListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getNationalityListResponse">
+		<wsdl:part element="tns:getNationalityListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCountryList">
+		<wsdl:part element="tns:getCountryList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getPositionList">
+		<wsdl:part element="tns:getPositionList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTitleListResponse">
+		<wsdl:part element="tns:getTitleListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCityListResponse">
+		<wsdl:part element="tns:getCityListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getOccupationList">
+		<wsdl:part element="tns:getOccupationList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getReasonList">
+		<wsdl:part element="tns:getReasonList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getBranchListResponse">
+		<wsdl:part element="tns:getBranchListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getEducationList">
+		<wsdl:part element="tns:getEducationList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getBranchList">
+		<wsdl:part element="tns:getBranchList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="retrieveRelationshipManagerResponse">
+		<wsdl:part element="tns:retrieveRelationshipManagerResponse"
+			name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getEducationListResponse">
+		<wsdl:part element="tns:getEducationListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTitleList">
+		<wsdl:part element="tns:getTitleList" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="retrieveRelationshipManager">
+		<wsdl:part element="tns:retrieveRelationshipManager" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getReasonListResponse">
+		<wsdl:part element="tns:getReasonListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getRIMClassListResponse">
+		<wsdl:part element="tns:getRIMClassListResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="PhoniexMasterDataManagement">
+		<wsdl:operation name="getNationalityList">
+			<wsdl:input message="tns:getNationalityList" name="getNationalityList"></wsdl:input>
+			<wsdl:output message="tns:getNationalityListResponse"
+				name="getNationalityListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getOccupationList">
+			<wsdl:input message="tns:getOccupationList" name="getOccupationList"></wsdl:input>
+			<wsdl:output message="tns:getOccupationListResponse"
+				name="getOccupationListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getEducationList">
+			<wsdl:input message="tns:getEducationList" name="getEducationList"></wsdl:input>
+			<wsdl:output message="tns:getEducationListResponse" name="getEducationListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getReasonList">
+			<wsdl:input message="tns:getReasonList" name="getReasonList"></wsdl:input>
+			<wsdl:output message="tns:getReasonListResponse" name="getReasonListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCityList">
+			<wsdl:input message="tns:getCityList" name="getCityList"></wsdl:input>
+			<wsdl:output message="tns:getCityListResponse" name="getCityListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getBranchList">
+			<wsdl:input message="tns:getBranchList" name="getBranchList"></wsdl:input>
+			<wsdl:output message="tns:getBranchListResponse" name="getBranchListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getRIMClassList">
+			<wsdl:input message="tns:getRIMClassList" name="getRIMClassList"></wsdl:input>
+			<wsdl:output message="tns:getRIMClassListResponse" name="getRIMClassListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCountryList">
+			<wsdl:input message="tns:getCountryList" name="getCountryList"></wsdl:input>
+			<wsdl:output message="tns:getCountryListResponse" name="getCountryListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getTitleList">
+			<wsdl:input message="tns:getTitleList" name="getTitleList"></wsdl:input>
+			<wsdl:output message="tns:getTitleListResponse" name="getTitleListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPositionList">
+			<wsdl:input message="tns:getPositionList" name="getPositionList"></wsdl:input>
+			<wsdl:output message="tns:getPositionListResponse" name="getPositionListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getSicCodeList">
+			<wsdl:input message="tns:getSicCodeList" name="getSicCodeList"></wsdl:input>
+			<wsdl:output message="tns:getSicCodeListResponse" name="getSicCodeListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="retrieveRelationshipManager">
+			<wsdl:input message="tns:retrieveRelationshipManager"
+				name="retrieveRelationshipManager"></wsdl:input>
+			<wsdl:output message="tns:retrieveRelationshipManagerResponse"
+				name="retrieveRelationshipManagerResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="PhoniexMasterDataManagementServiceSoapBinding"
+		type="tns:PhoniexMasterDataManagement">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getNationalityList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getNationalityList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getNationalityListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getOccupationList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getOccupationList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getOccupationListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getReasonList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getReasonList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getReasonListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getEducationList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getEducationList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getEducationListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCityList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getCityList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getCityListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getBranchList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getBranchList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getBranchListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getRIMClassList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getRIMClassList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getRIMClassListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCountryList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getCountryList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getCountryListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getTitleList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getTitleList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getTitleListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPositionList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getPositionList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getPositionListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="retrieveRelationshipManager">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="retrieveRelationshipManager">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="retrieveRelationshipManagerResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getSicCodeList">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="getSicCodeList">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getSicCodeListResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="PhoniexMasterDataManagementService">
+		<wsdl:port binding="tns:PhoniexMasterDataManagementServiceSoapBinding"
+			name="PhoniexMasterDataManagementPort">
+			<soap:address location="http://172.16.60.138:8081/PhoniexMasterDataManagement" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

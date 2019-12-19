@@ -1,0 +1,20 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://customeronboarding.cob.cbd.ae/common/"
+	elementFormDefault="unqualified" targetNamespace="http://customeronboarding.cob.cbd.ae/common/"
+	version="1.0">
+	<xs:element name="baseRequest" type="tns:baseRequest" />
+	<xs:complexType name="baseRequest">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="uuid" type="xs:string" />
+			<xs:element minOccurs="0" name="correlationId" type="xs:string" />
+			<xs:element minOccurs="0" name="sessionId" type="xs:string" />
+			<xs:element minOccurs="0" name="ipAddress" type="xs:string" />
+			<xs:element minOccurs="0" name="channelId" type="xs:string" />
+			<xs:element minOccurs="0" name="branchCode" type="xs:string" />
+			<xs:element minOccurs="0" name="userId" type="xs:int" />
+			<xs:element minOccurs="0" name="userName" type="xs:string" />
+			<xs:element minOccurs="0" name="userNames" type="xs:string" />
+			<xs:element minOccurs="0" name="role" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

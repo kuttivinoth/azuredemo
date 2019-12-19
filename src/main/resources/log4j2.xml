@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ALL" monitorInterval="30">
+	<Appenders>
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} %X{sessionID} %X{rqUID} %X{appRefNo}  %-5level %class{36} %M - %msg%n" />
+		</Console>
+		<RollingFile name="RefServiceLog" fileName="/jboss-logs/ref/RefDataServiceInfo.log"
+			filePattern="/jboss-logs/ref/$${date:yyyy-MM}/RefDataServiceInfo-%d{yyyy-MM-dd-HH}-%i.log.gz"
+			immediateFlush="false">
+			<PatternLayout>
+			<replace regex="(?&lt;=&lt;(wsse:Password))(.*?)(?=&lt;/(wsse:Password)&gt;)" replacement="***"/>
+				<Pattern>%d{yyyy-MM-dd} %d{HH:mm:ss.SSS} %X{sessionID} %X{rqUID}
+					%X{appRefNo} %-5level %class{36} %M-%msg%n%throwable</Pattern>
+			</PatternLayout>
+
+			<Policies>
+				<!-- <TimeBasedTriggeringPolicy interval="1" modulate="true"/> -->
+				<SizeBasedTriggeringPolicy maxFileSize="20 MB" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="PayloadTraceLog" fileName="/jboss-logs/ref/RefDataPayload.log"
+			filePattern="/jboss-logs/ref/$${date:yyyy-MM}/RefDataPayload-%d{yyyy-MM-dd-HH}-%i.log.gz"
+			immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd} %d{HH:mm:ss.SSS} %X{sessionID} %X{rqUID}
+					%X{appRefNo} %-5level %class{36} %M-%msg%n%throwable</Pattern>
+			</PatternLayout>
+
+			<Policies>
+				<!-- <TimeBasedTriggeringPolicy interval="1" modulate="true"/> -->
+				<SizeBasedTriggeringPolicy maxFileSize="20 MB" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="EntryExitLog" fileName="/jboss-logs/ref/RefDataEntryExit.log"
+			filePattern="/jboss-logs/ref/$${date:yyyy-MM}/RefDataEntryExit-%d{yyyy-MM-dd-HH}-%i.log.gz"
+			immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd} %d{HH:mm:ss.SSS} %X{sessionID} %X{rqUID}
+					%X{appRefNo} %-5level %class{36} %M-%msg%n%throwable</Pattern>
+			</PatternLayout>
+
+			<Policies>
+				<!-- <TimeBasedTriggeringPolicy interval="1" modulate="true"/> -->
+				<SizeBasedTriggeringPolicy maxFileSize="20 MB" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="PerformanceLog" fileName="/jboss-logs/ref/RefDataPerformance.log"
+			filePattern="/jboss-logs/ref/$${date:yyyy-MM}/RefDataPerformance-%d{yyyy-MM-dd-HH}-%i.log.gz"
+			immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd} %d{HH:mm:ss.SSS} %X{sessionID} %X{rqUID}
+					%X{appRefNo} %-5level %class{36} %M-%msg%n%throwable</Pattern>
+			</PatternLayout>
+
+			<Policies>
+				<!-- <TimeBasedTriggeringPolicy interval="1" modulate="true"/> -->
+				<SizeBasedTriggeringPolicy maxFileSize="20 MB" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="EXCEPTIONFILE" fileName="/jboss-logs/ref/RefDataException.log"
+			filePattern="/jboss-logs/ref/$${date:yyyy-MM}/RefDataException-%d{yyyy-MM-dd-HH}-%i.log.gz"
+			immediateFlush="false">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd} %d{HH:mm:ss.SSS} %X{sessionID} %X{rqUID}
+					%X{appRefNo} %-5level %class{36} %M-%msg%n%throwable</Pattern>
+			</PatternLayout>
+
+
+			<Policies>
+				<!-- <TimeBasedTriggeringPolicy interval="1" modulate="true"/> -->
+				<SizeBasedTriggeringPolicy maxFileSize="20 MB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<AsyncLogger name="ae.cbd" level="ALL" additivity="false"
+			includeLocation="true">
+			<AppenderRef ref="RefServiceLog" />
+			<!-- <AppenderRef ref="EXCEPTIONFILE" /> -->
+		</AsyncLogger>
+
+
+		<AsyncLogger name="ae.cbd.clo.PayloadLoggingFilter" level="ALL"
+			additivity="false" includeLocation="true">
+			<AppenderRef ref="PayloadTraceLog" />
+		</AsyncLogger>
+
+		<AsyncLogger name="ae.cbd.clo.ref.aspect.EntryExitLoggingAspect"
+			level="ALL" additivity="false" includeLocation="true">
+			<AppenderRef ref="EntryExitLog" />
+		</AsyncLogger>
+		<AsyncLogger name="ae.cbd.clo.ref.aspect.PerformanceLoggingAspect"
+			level="ALL" additivity="false" includeLocation="true">
+			<AppenderRef ref="PerformanceLog" />
+		</AsyncLogger>
+		<AsyncLogger name="ae.cbd.clo.ref.aspect.ExceptionLoggingAspect"
+			level="ALL" additivity="false" includeLocation="true">
+			<AppenderRef ref="EXCEPTIONFILE" />
+		</AsyncLogger>
+	</Loggers>
+</Configuration>

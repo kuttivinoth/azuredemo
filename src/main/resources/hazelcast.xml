@@ -1,0 +1,41 @@
+<hazelcast
+	xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.9.xsd"
+	xmlns="http://www.hazelcast.com/schema/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<instance-name>HazelCastInstance</instance-name>
+
+	<!-- Cache config compliant to JCache -->
+	<!-- 1. Every persistable object must implement Serializable along with 
+		serialVersionUID -->
+
+	<!-- 2. Create as many Cache as required with given config -->
+
+	<network>
+		<!-- <port port-count="1" auto-increment="true">5701</port> -->
+		<reuse-address>true</reuse-address>
+		<join>
+			<multicast enabled="false"></multicast>
+			<tcp-ip enabled="false"></tcp-ip>
+		</join>
+	</network>
+
+
+	<cache name="ReferenceDataCache">
+		<statistics-enabled>false</statistics-enabled>
+		<management-enabled>false</management-enabled>
+
+		<key-type class-name="java.lang.String" />
+		<value-type
+			class-name="ae.cbd.clo.ref.data.referencedatamanagement.dto.ReferenceDataType" />
+
+		<expiry-policy-factory>
+			<timed-expiry-policy-factory
+				expiry-policy-type="ETERNAL" />
+		</expiry-policy-factory>
+
+		<eviction size="2000" max-size-policy="ENTRY_COUNT"
+			eviction-policy="LRU" />
+
+	</cache>
+
+</hazelcast>

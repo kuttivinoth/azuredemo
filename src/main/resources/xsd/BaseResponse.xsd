@@ -1,0 +1,32 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://customeronboarding.cob.cbd.ae/common/"
+	elementFormDefault="unqualified" targetNamespace="http://customeronboarding.cob.cbd.ae/common/"
+	version="1.0">
+	<xs:element name="baseResponse" type="tns:baseResponse" />
+	<xs:complexType name="baseResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="uuid" type="xs:string" />
+			<xs:element minOccurs="0" name="correlationId" type="xs:string" />
+			<xs:element minOccurs="0" name="sessionId" type="xs:string" />
+			<xs:element maxOccurs="1" minOccurs="0" name="errorInformationList"
+				type="tns:errorInformationList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="errorInformationList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="errorInformation" type="tns:errorInformation" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="errorInformation">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="errorCode" type="xs:string" />
+			<xs:element minOccurs="0" name="errorDescription" type="xs:string" />
+			<xs:element minOccurs="0" name="errorType" type="xs:string" />
+			<xs:element minOccurs="0" name="hostErrorCode" type="xs:string" />
+			<xs:element minOccurs="0" name="hostErrorDescription"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="hostErrorType" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

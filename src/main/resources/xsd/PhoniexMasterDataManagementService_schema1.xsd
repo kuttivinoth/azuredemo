@@ -1,0 +1,293 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://customeronboarding.cob.cbd.ae/" xmlns:breq="http://customeronboarding.cob.cbd.ae/common/"
+	elementFormDefault="unqualified" targetNamespace="http://customeronboarding.cob.cbd.ae/"
+	version="1.0">
+	<xs:import namespace="http://customeronboarding.cob.cbd.ae/common/"
+		schemaLocation="BaseResponse.xsd" />
+	<xs:import namespace="http://customeronboarding.cob.cbd.ae/common/"
+		schemaLocation="BaseRequest.xsd" />
+	<xs:element name="getBranchList" type="tns:getBranchList" />
+	<xs:element name="getBranchListResponse" type="tns:getBranchListResponse" />
+	<xs:element name="getReasonList" type="tns:getReasonList" />
+	<xs:element name="getReasonListResponse" type="tns:getReasonListResponse" />
+	<xs:element name="getCityList" type="tns:getCityList" />
+	<xs:element name="getCityListResponse" type="tns:getCityListResponse" />
+	<xs:element name="getCountryList" type="tns:getCountryList" />
+	<xs:element name="getCountryListResponse" type="tns:getCountryListResponse" />
+	<xs:element name="getEducationList" type="tns:getEducationList" />
+	<xs:element name="getEducationListResponse" type="tns:getEducationListResponse" />
+	<xs:element name="getNationalityList" type="tns:getNationalityList" />
+	<xs:element name="getNationalityListResponse" type="tns:getNationalityListResponse" />
+	<xs:element name="getPositionList" type="tns:getPositionList" />
+	<xs:element name="getPositionListResponse" type="tns:getPositionListResponse" />
+	<xs:element name="getOccupationList" type="tns:getOccupationList" />
+	<xs:element name="getOccupationListResponse" type="tns:getOccupationListResponse" />
+	<xs:element name="getRIMClassList" type="tns:getRIMClassList" />
+	<xs:element name="getRIMClassListResponse" type="tns:getRIMClassListResponse" />
+	<xs:element name="getTitleList" type="tns:getTitleList" />
+	<xs:element name="getTitleListResponse" type="tns:getTitleListResponse" />
+	<xs:element name="retrieveRelationshipManager" type="tns:retrieveRelationshipManager" />
+	<xs:element name="retrieveRelationshipManagerResponse" type="tns:retrieveRelationshipManagerResponse" />
+	<xs:element name="getSicCodeList" type="tns:getSicCodeList" />
+	<xs:element name="getSicCodeListResponse" type="tns:getSicCodeListResponse" />
+	<xs:complexType name="retrieveRelationshipManagerResponse">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="relationshipManager" type="tns:RelationshipManager" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="retrieveRelationshipManager">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="retrieveRelationshipManagerRequest"
+				type="tns:retrieveRelationshipManagerRequest" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="retrieveRelationshipManagerRequest">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="branchNo" type="xs:int" />
+			<xs:element minOccurs="0" name="classCode" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RelationshipManager">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="employeeName" type="xs:string" />
+			<xs:element minOccurs="0" name="employeeId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getReasonList">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="getReasonListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:reasonList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="reasonList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="reasonList"
+				nillable="true" type="tns:reason" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="reason">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+			<xs:element name="reasonId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getNationalityList">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="getNationalityListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:nationalityList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="nationalityList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="nationlitylist" nillable="true" type="tns:nationality" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="nationality">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+			<xs:element name="nationalityId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getEducationList">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="getEducationListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:educationList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="educationList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="educationList" nillable="true" type="tns:education" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="education">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+			<xs:element name="educationId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getCityList">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="arg0" type="tns:country" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="country">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="countryCode" type="xs:string" />
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getCityListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:cityList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="cityList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="cityList"
+				nillable="true" type="tns:city" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="city">
+		<xs:sequence>
+			<xs:element name="cityId" type="xs:int" />
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getSicCodeList">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="arg0" type="tns:sicCodeRequest" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sicCodeRequest">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="rimType" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getSicCodeListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:sicCodeList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sicCodeList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="sicCodeList"
+				nillable="true" type="tns:sicCode" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sicCode">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+			<xs:element name="sicCode" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getBranchList">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="arg0" type="tns:branch" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="branch">
+		<xs:sequence>
+			<xs:element name="branchCode" type="xs:int" />
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+			<xs:element minOccurs="0" name="isIslamic" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getBranchListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:branchList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="branchList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="branchList"
+				nillable="true" type="tns:branch" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getRIMClassList">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="arg0" type="tns:rimClass" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="rimClass">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+			<xs:element name="rimId" type="xs:int" />
+			<xs:element minOccurs="0" name="rimType" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getRIMClassListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:rimClassList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="rimClassList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="rimClassList"
+				nillable="true" type="tns:rimClass" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getCountryList">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="getCountryListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:countryList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="countryList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="countryList"
+				nillable="true" type="tns:country" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getTitleList">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="getTitleListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:titleList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="titleList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="titleList"
+				nillable="true" type="tns:title" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="title">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+			<xs:element name="titleId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getPositionList">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="getPositionListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:positionList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="positionList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="positionList"
+				nillable="true" type="tns:position" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="position">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+			<xs:element name="positionId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getOccupationList">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="getOccupationListResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="tns:occupationList" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="occupationList">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="occupationList" nillable="true" type="tns:occupation" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="occupation">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="description" type="xs:string" />
+			<xs:element name="occupationId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

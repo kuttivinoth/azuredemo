@@ -1,0 +1,201 @@
+buildscript {
+    repositories {
+       maven{
+			url "http://172.16.60.14:8081/repository/WCASRepository1/"
+		}
+		}
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.6.RELEASE")
+    }
+}
+
+apply plugin:'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+apply plugin: 'maven-publish'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin:'checkstyle'
+apply plugin:'maven'
+
+
+
+group = 'ae.cbd.clo.ref.data'
+
+// version = '1.0.0-SNAPSHOT'
+
+description = """ReferenceData Rest Service"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+repositories {
+    maven{
+			url "http://172.16.60.14:8081/repository/WCASRepository1/"
+		}
+		
+}
+dependencies {
+ 
+ 	compile("org.springframework.boot:spring-boot-starter-web","javax.servlet:jstl")
+ 	configurations {
+    runtime.exclude module: 'spring-boot-starter-tomcat'
+}
+    compile("commons-discovery:commons-discovery:0.5")
+    compile("commons-logging:commons-logging:1.2")
+    compile("org.jasypt:jasypt:1.9.2")
+    compile("com.lmax:disruptor:3.3.4")
+    compile("dom4j:dom4j:1.6.1")
+     {
+	exclude(module: 'xml-apis')
+    }
+   	compile("org.springframework:spring-aop")
+	compile("org.springframework:spring-aspects")
+    compile("org.jboss:jandex:2.0.1.Final")
+    compile("javax.xml:jaxrpc-api:1.1")
+   // compile("javax.xml:jaxb-api:2.1.12")
+    compile("org.apache.logging.log4j:log4j-core:2.8.1")
+    compile("org.apache.logging.log4j:log4j-api:2.8.1")
+	//compile("org.apache.commons:commons-io:2.4")
+	
+	compile group: 'commons-io', name: 'commons-io', version: '2.5'
+	compile group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '1.15'
+	
+	compile("org.mapstruct:mapstruct-jdk8:1.1.0.Final")
+    compile("org.mapstruct:mapstruct-processor:1.1.0.Final")
+    compile("org.hibernate:hibernate-core:5.2.10.Final")
+    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
+    compile("org.hibernate:hibernate-entitymanager:5.2.10.Final")
+    compile("org.hibernate:hibernate-entitymanager:5.2.10.Final")
+    compile("org.springframework.boot:spring-boot-starter-cache")
+    //compile("org.springframework.boot:spring-boot-starter")
+  
+    compile("io.springfox:springfox-swagger2:2.7.0")
+	compile("io.springfox:springfox-swagger-ui:2.7.0")
+    compile("com.hazelcast:hazelcast:3.9")
+    compile("com.hazelcast:hazelcast-spring:3.9")
+   // compile group:'com.hazlecast', name:'hazlecast',version:'3.4'
+    compile files("lib/sqljdbc4-4.2.0.jar")
+	//compile("ae.cbd.logging:logging-service:1.0")
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("org.apache.commons:commons-lang3:3.0")
+	//compile("org.apache.logging.log4j:log4j-to-slf4j:2.7")
+	compile("org.slf4j:slf4j-api:1.7.21")
+	compile("javax.cache:cache-api:1.0.0")
+	//compile("ch.qos.logback:logback-classic:1.1.8")
+    //compile("com.sun.jersey:jersey-bundle:1.19"){
+    //exclude(module: 'javax.ws.rs')
+    //}
+    compile("com.sun.jersey:jersey-bundle:1.19"){
+   	exclude group: 'javax.ws.rs', module: 'jsr311-api'
+   }
+    compile files("lib/jackson-all-1.9.0.jar")
+    compile("org.json:json:20170516")
+   // compile("com.fasterxml.jackson:jackson-all:1.9.0")
+   compile files("lib/PhoenixMasterData.jar")
+}
+
+ext {
+    
+    generatedMapperSourcesDir = "${buildDir}/classes/java/main"
+}
+
+sourceSets.main {
+    ext.originalJavaSrcDirs = java.srcDirs
+    java.srcDir "${generatedMapperSourcesDir}"
+}
+
+springBoot {
+mainClass ="ae.cbd.clo.ref.data"
+}
+
+checkstyle{
+
+toolVersion='6.16.1'
+ignoreFailures=true
+}
+
+
+tasks.withType(Checkstyle)
+{
+
+reports
+{
+xml.enabled=true
+html.enabled=true
+}
+
+}
+
+def _versionCode=0
+def _major=0
+def _minor=0
+
+
+def versionPropsFile = file('version.properties')
+
+if (versionPropsFile.canRead()) {
+    def Properties versionProps = new Properties()
+
+    versionProps.load(new FileInputStream(versionPropsFile))
+
+    _major = versionProps['RD_MAJOR'].toInteger()
+    _minor = versionProps['RD_MINOR'].toInteger() 
+    _versionCode= versionProps['RD_VERSION_CODE'].toInteger()+1
+	println _versionCode
+    if(_versionCode>=99)
+    {
+        _versionCode=0
+        _minor=_minor+1
+		println _versionCode
+    }
+    if(_major==99){
+        _major=0
+        _major=_major+1
+    }
+
+ println _versionCode
+    versionProps['RD_MAJOR']=_major.toString()
+    versionProps['RD_MINOR']=_minor.toString()
+    versionProps['RD_VERSION_CODE']=_versionCode.toString()
+    versionProps.store(versionPropsFile.newWriter(), null)
+}
+else {
+    throw new GradleException("Could not read version.properties!")
+}
+def _versionName = "${_major}.${_minor}.${_versionCode}"
+
+println _versionName
+
+
+
+war{
+
+manifest{
+
+attributes("VersionNumber":_versionName,"ProjectName":"ReferenceDataManagement")
+}
+from sourceSets.main.output
+}
+
+publishing {
+    publications {
+        webApp( MavenPublication ) {
+            artifactId 'ReferenceData'
+			groupId 'Wcas'
+			from components.web
+			version _versionName
+        }
+    }
+    repositories {
+        maven {
+            url 'http://172.16.60.14:8081/repository/WcasWarRepository/'
+            credentials {
+                username 'admin'
+                password 'admin123'
+            }
+        }
+    }
+}
+
