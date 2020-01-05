@@ -15,6 +15,8 @@ public class EmployeeController {
 	@RequestMapping("/cbd")
     public List<Employee> getEmployees() 
     {
+	    	String prefix = System.getenv().getOrDefault("GREETING_PREFIX", "Hi");
+	    	System.out.println("prefix !"+prefix);
 		List<Employee> employeesList = new ArrayList<Employee>();
 		employeesList.add(new Employee(1,"lokesh","gupta","kuttivinoth@gmail.com"));
 		return employeesList;
