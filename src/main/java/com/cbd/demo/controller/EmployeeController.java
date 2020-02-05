@@ -18,7 +18,7 @@ public class EmployeeController {
 	    	String prefix = System.getenv().getOrDefault("GREETING_PREFIX", "Hi");
 	    	System.out.println("prefix !"+prefix);
 		List<Employee> employeesList = new ArrayList<Employee>();
-		employeesList.add(new Employee(1,"Vinoth","kumar","kuttivinoth@gmail.com"));
+		employeesList.add(new Employee(1,"Vinoth","kumar","kuttivinoth@cbd.com"));
 		return employeesList;
     }
 
